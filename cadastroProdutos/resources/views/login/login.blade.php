@@ -39,7 +39,7 @@
         }
         function verificar(data){
             if(data.success === true)
-                window.location.href = '{{route('login.painel')}}'
+                window.location.href = '{{route('admin.dashboard')}}'
             else
                 alert("falha")
         }

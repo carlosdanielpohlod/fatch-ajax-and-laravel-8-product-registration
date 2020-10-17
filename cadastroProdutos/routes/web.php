@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\auth\Login;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\Dashboard;
+use App\Http\Controllers\products\CreateProduct;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,10 @@ Route::prefix('login')->group(function (){
     Route::get('/', [Login::class,'showFormLogin'])->name('login.login');
     Route::post('/do',[Login::class,'login'])->name('login.do');
 });
-Route::match(['get', 'post'],'/painel', function(){
-    return view('painel');
-})->name('login.painel');
+Route::prefix('admin')->group(function(){
+    Route::match(['get', 'post'],'/', [Dashboard::class,'showDashboard'])->name('admin.dashboard');
+});
+Route::prefix('admin/product/register')->group(function(){
+    Route::match(['get', 'post'],'/new',[CreateProduct::class,'showFormCreate'])->name('product.new');
+    Route::post('new/do',[CreateProduct::class,'new'])->name('product.new.do');
+});
