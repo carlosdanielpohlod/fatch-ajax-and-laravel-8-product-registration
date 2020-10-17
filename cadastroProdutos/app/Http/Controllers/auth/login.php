@@ -17,11 +17,12 @@ class login extends Controller
             'password' => $request['password']
         ];
         if(Auth::attempt($credentials)){
-            return view('painel');
+            $login['success'] = true;
+            echo json_encode($login);
+            return ;
         }else{
             $login['success'] = false;
-            $login['message'] = "Senha ou email inválidos";
-            echo json_encode($login);
+            $login['message'] = "Senha ou email inválidos";   
             return ;
         }
     }

@@ -39,13 +39,13 @@
         }
         function verificar(data){
             if(data.success === true)
-                window.location.href = {{route('login.login')}}
+                window.location.href = '{{route('login.painel')}}'
             else
                 alert("falha")
         }
         fetch(form.action, options)
         .then(response => response.json())
-        .then(data => verificar(data.success))
+        .then(data => verificar(data))
         .catch(error => console.log(error))
         
     }

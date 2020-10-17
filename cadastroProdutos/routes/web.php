@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\auth\login;
+use App\Http\Controllers\auth\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('login')->group(function (){
-    Route::get('/', [login::class,'showFormLogin'])->name('login.login');
-    Route::post('/do',[login::class,'login'])->name('login.do');
+    Route::get('/', [Login::class,'showFormLogin'])->name('login.login');
+    Route::post('/do',[Login::class,'login'])->name('login.do');
 });
+Route::match(['get', 'post'],'/painel', function(){
+    return view('painel');
+})->name('login.painel');
