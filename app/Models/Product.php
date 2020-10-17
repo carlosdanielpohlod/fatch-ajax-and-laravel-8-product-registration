@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     public $primaryKey = 'idProduct';
-    public $table = 'Product';
+    public $table = 'product';
     public $fillable = ['idProduct', 'name','price'];
     public $timestamps = false;
     public function new($data){
