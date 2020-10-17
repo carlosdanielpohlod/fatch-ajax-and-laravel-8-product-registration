@@ -8,24 +8,40 @@
 </header>
 <body>
   <div class="container">
-    
-      <form name="newProduct" method="post">
-        <div class="row">
-          @csrf
-          <div class="col 6">
-            <input type="text" name="name" class="form-control" placeholder="Titulo" />
-          </div>
-          <div class="col 6">
-            <input type="text" name="price" class="form-control" placeholder="Preco" />
-          </div>
+      <div class="row">
+        <div class="col-md-6">
+          <form name="newProduct" method="post">
+            
+              @csrf
+              
+                <input type="text" name="name" class="form-control" placeholder="Titulo" />
+              
+              
+                <input type="text" name="price" class="form-control" placeholder="Preco" />
+              
+            
+              <div id="submitDiv">
+                <button class="btn btn-success" id="submitButton">Save</button>
+              </div>
+            
+            
+          </form>
         </div>
-        <div id="submitDiv" class="row">
-          <button class="btn btn-success" id="submitButton">Save</button>
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                
+              </tr>
+            </thead>
+            <tbody id="recentsTbody">
+              
+            </tbody>
+          </table>
         </div>
-        
-      </form>
-    
-      
   </div>
   
 </body>
@@ -48,12 +64,18 @@
       const divSpinner = document.getElementById('spinner').remove()
       disabledSubmit(false)
   }
+  function updateRecentList(data){
+    const tbodyRecents = document.getElementById('recentsTbody')
+    tbodyRecents.insertAdjacentHTML('afterbegin','<tr>  <td>'+data.name+'</td> <td>'+data.price+'</td> </tr>')
+  }
   function msgResponse(data){
     if(data.success === true){
       deleteSpinner()
+      updateRecentList(data)
       alert("Cdastrado")
     }else{
       deleteSpinner()
+      
       alert(data.message)
     }
   }

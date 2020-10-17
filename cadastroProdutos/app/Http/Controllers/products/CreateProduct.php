@@ -16,9 +16,11 @@ class CreateProduct extends Controller
         try{
             
             $product = new Product();
-            $product->new($request);
+            $newProduct = $product->new($request);
             $response['success'] = true;
             $response['message'] = 'Ocorreu um erro';
+            $response['name'] = $newProduct->name;
+            $response['price'] = $newProduct->price;
             echo json_encode($response);
             return ;
         }
