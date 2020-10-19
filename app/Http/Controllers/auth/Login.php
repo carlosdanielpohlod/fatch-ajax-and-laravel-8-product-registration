@@ -23,8 +23,13 @@ class login extends Controller
             return ;
         }else{
             $login['success'] = false;
-            $login['message'] = "Senha ou email inválidos";   
+            $login['message'] = "Senha ou email inválidos"; 
+            echo json_encode($login)  ;
             return ;
         }
+    }
+    public function logout(){
+        Auth::logout();
+        return view('login.login');
     }
 }

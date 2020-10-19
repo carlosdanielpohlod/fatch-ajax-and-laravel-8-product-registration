@@ -15,6 +15,10 @@
                 <div class="ml-6 col-xs-4 mr-6">
                     <input class="form-control" name="password">
                 </div>
+                
+            </div>
+            <div class="row">
+                <label id="labelError"><label>
             </div>
             <div class="row">
                 <div class="ml-4 col-xs-4 mr-4">
@@ -36,9 +40,14 @@
         divSubmit.insertAdjacentHTML('afterbegin','<div class="spinner-border" id="spinner" role="status"></div>')
         disabledSubmit(true)
     }
+    function labelError(msg){
+        const labelError = document.getElementById('labelError')
+        labelError.innerText = msg
+    }
     function deleteSpinner(){
         const divSpinner = document.getElementById('spinner').remove()
         disabledSubmit(false)
+        
     }
     // const loginForm = document.getElementsByName('loginForm')
     document.loginForm.onsubmit = async e => {
@@ -53,9 +62,12 @@
         function verificar(data){
             if(data.success === true)
                 window.location.href = '{{route('admin.dashboard')}}'
-            else
-                alert("falha")
+            else{
+                labelError(data.message)
+                deleteSpinner()
+            }
         }
+        createSpinner()
         fetch(form.action, options)
         .then(response => response.json())
         .then(data => verificar(data))

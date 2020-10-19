@@ -20,13 +20,14 @@ use App\Models\Product;
 Route::prefix('login')->group(function (){
     Route::get('/', [Login::class,'showFormLogin'])->name('login.login');
     Route::post('/do',[Login::class,'login'])->name('login.do');
+    Route::match(['get','post'],'/logout',[Login::class,'logout'])->name('login.logout');
 });
 Route::prefix('admin')->group(function(){
     Route::match(['get', 'post'],'/', [Dashboard::class,'showDashboard'])->name('admin.dashboard');
 });
 Route::prefix('admin/product/register')->group(function(){
     Route::match(['get', 'post'],'/new',[CreateProduct::class,'showFormCreate'])->name('product.new');
-    Route::post('new/do',[CreateProduct::class,'new'])->name('product.new.do');
+    Route::post('/new/do',[CreateProduct::class,'new'])->name('product.new.do');
 });
 Route::prefix('admin/product')->group(function(){
     Route::match(['get','post'],'/list',[Dashboard::class,'showProductList'])->name('product.list');

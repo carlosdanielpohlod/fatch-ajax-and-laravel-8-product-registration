@@ -20,7 +20,7 @@
     function createCard(){
       for(let i = 0;  i < json.length; i++){
         let data = json[i]
-        const html = @include('admin.src.html.productCard')
+        let html = @include('admin.src.html.productCard')
         
         containerCards.insertAdjacentHTML('beforeend',html)
       }
