@@ -1,0 +1,1 @@
+'<div class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' + data.nome +' </h5><p class="card-text">'+data.idade+'</p></div></div>'
