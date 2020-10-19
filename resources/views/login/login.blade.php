@@ -18,15 +18,28 @@
             </div>
             <div class="row">
                 <div class="ml-4 col-xs-4 mr-4">
-                    <button class="btn btn-success" type="submit">Login</button>
+                    <button class="btn btn-success" id="submitButton" type="submit">Login</button>
                 </div>
             </div>
-            
+            <div id="submitDiv"></div>
         </form>
     </div>
 </body>
 <script>
-    
+    function disabledSubmit(status){
+        const buttonSubmit = document.getElementById('submitButton')
+        buttonSubmit.disabled = status
+    }
+    function createSpinner(){
+        const divSubmit = document.getElementById('submitDiv')
+        
+        divSubmit.insertAdjacentHTML('afterbegin','<div class="spinner-border" id="spinner" role="status"></div>')
+        disabledSubmit(true)
+    }
+    function deleteSpinner(){
+        const divSpinner = document.getElementById('spinner').remove()
+        disabledSubmit(false)
+    }
     // const loginForm = document.getElementsByName('loginForm')
     document.loginForm.onsubmit = async e => {
         e.preventDefault()
@@ -50,6 +63,6 @@
         
     }
 </script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
