@@ -19,18 +19,19 @@
     }
     document.newProduct.onsubmit = async e => {
         e.preventDefault()
-        const data = new FormData(e.target)
-        const url = '{{route('product.new.do')}}'
-        const options = {
-          method: "POST",
-          body: new URLSearchParams(data)
-        }
-        createSpinner()
-        fetch(url, options)
-        .then(response => response.json())
-        .then(data => msgResponse(data))
-        .catch(alert(response), deleteSpinner())
-     
+        
+          const data = new FormData(e.target)
+          const url = '{{route('product.new.do')}}'
+          const options = {
+            method: "POST",
+            body: new URLSearchParams(data)
+          }
+          createSpinner()
+          fetch(url, options)
+          .then(response => response.json())
+          .then(data => msgResponse(data))
+          .catch(alert(response), deleteSpinner())
+        
          
     }
 </script>

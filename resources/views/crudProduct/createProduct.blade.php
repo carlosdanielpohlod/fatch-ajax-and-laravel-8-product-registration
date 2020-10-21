@@ -7,16 +7,18 @@
   @include('admin.src.html.layoutUp')
 </header>
 <body>
-  <div class="container">
+  <div class="container mt-2">
       <div class="row">
         <div class="col-md-6">
           <form name="newProduct" method="post" class="form-row">
               @csrf
               <div class="col-xs-6">
-                <input type="text" name="name" class="form-control" placeholder="Title" />
+                <input type="text" name="name" id="name" class="form-control" placeholder="Title" />
+                <label id="statusName" class="mt-1"></label>
               </div>
               <div class="col-xs-6">
-                <input type="text" name="price" class="form-control" placeholder="Price" />
+                <input type="text" name="price" id="price" class="form-control" placeholder="Price" />
+                <label id="statusPrice" class="mt-1"></label>
               </div>
               <div id="submitDiv">
                 <button class="btn btn-success" id="submitButton">Save</button>
@@ -42,6 +44,8 @@
   </div>
   
 </body>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -49,4 +53,6 @@
 
 @include('crudProduct.src.js.animation')
 @include('crudProduct.src.js.layoutAction')
+@include('crudProduct.src.js.validation')
 @include('crudProduct.src.js.ajax')
+
