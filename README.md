@@ -1,8 +1,11 @@
 <h1> About this Project </h1>
 <p> This project was developed by Carlos Daniel Pohlod to learn Ajax (using the fetch ajax) and the Laravel 8 Relaease.</p>
 <p> The project don´t has any user requiriments and the pages and functionalities are random developed, just to test the framework and ajax </p>
+<p> You may see ajax examples and interactive card display !</p>
 <p> Thanks for watching the project ;) </p>
-
+<h3> Dependencies </h3>
+<p> Laravel Framework 8, available in https://laravel.com/docs/8.x/readme </p>
+<p> Sweet Alert, available in https://sweetalert2.github.io/ </p>
 <h2> About Laravel Framework </h2>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
@@ -14,7 +17,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
