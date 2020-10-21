@@ -23,7 +23,7 @@ class login extends Controller
             return ;
         }else{
             $login['success'] = false;
-            $login['message'] = "Senha ou email inválidos"; 
+            $login['message'] = "Invalid email or password"; 
             echo json_encode($login)  ;
             return ;
         }

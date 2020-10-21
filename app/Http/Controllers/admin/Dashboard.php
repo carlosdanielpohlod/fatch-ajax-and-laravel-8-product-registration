@@ -26,6 +26,8 @@ class Dashboard extends Controller
             $products= json_encode( $products, JSON_HEX_QUOT|JSON_HEX_APOS );
             // echo $products;
             return view('admin.viewProducts',compact('products'));
+        }else{
+            return view('login.login');
         }
     }
     public function getMoreProducts(Request $request){
@@ -44,6 +46,8 @@ class Dashboard extends Controller
                 echo json_encode($response);
                 return ;
             }
+        }else{
+            return view('login.login');
         }
     }
 }
