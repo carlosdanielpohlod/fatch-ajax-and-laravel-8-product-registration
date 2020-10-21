@@ -1,3 +1,10 @@
+<h1> About this Project </h1>
+<p> This project was developed by Carlos Daniel Pohlod to learn Ajax (using the fetch ajax) and the Laravel 8 Relaease.</p>
+<p> The project don´t has any user requiriments and the pages and functionalities are random developed, just to test the framework and ajax </p>
+<p> Thanks for watching the project ;) </p>
+
+<h2> About Laravel Framework </h2>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
