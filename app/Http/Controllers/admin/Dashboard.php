@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,14 +22,28 @@ class Dashboard extends Controller
         if(Auth::check()){
             $product = new Product();
             $products = product::all();
+            
             $products= json_encode( $products, JSON_HEX_QUOT|JSON_HEX_APOS );
-
+            // echo $products;
             return view('admin.viewProducts',compact('products'));
         }
     }
     public function getMoreProducts(Request $request){
         if(Auth::check()){
-
+            try{
+                $product = new Product();
+                $products = $product->getBiggerThenId($request['index'],$request['take']);
+                $response['success'] = true;
+                $response['products'] = $products;
+                echo json_encode($response);
+                return ;
+            }
+            catch(Exception $exception){
+                $response['success'] = false;
+                $response['error'] = $exception;
+                echo json_encode($response);
+                return ;
+            }
         }
     }
 }

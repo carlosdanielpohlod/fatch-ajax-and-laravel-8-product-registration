@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\Dashboard;
+use App\Http\Controllers\admin\ListProducts;
 use App\Http\Controllers\products\CreateProduct;
 use App\Models\Product;
 

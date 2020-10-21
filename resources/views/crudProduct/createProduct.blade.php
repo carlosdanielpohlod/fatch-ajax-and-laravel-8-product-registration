@@ -14,10 +14,10 @@
             
               @csrf
               
-                <input type="text" name="name" class="form-control" placeholder="Titulo" />
+                <input type="text" name="name" class="form-control" placeholder="Title" />
               
               
-                <input type="text" name="price" class="form-control" placeholder="Preco" />
+                <input type="text" name="price" class="form-control" placeholder="Price" />
               
             
               <div id="submitDiv">

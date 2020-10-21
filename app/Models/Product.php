@@ -18,4 +18,7 @@ class Product extends Model
             'price' => $data['price']
         ]);
     }
+    public function getBiggerThenId($id, $take){
+        return $this->where('idProduct','>',$id)->take($take)->get();
+    }
 }
