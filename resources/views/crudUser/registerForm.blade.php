@@ -4,7 +4,7 @@
 </head>
 <body>
     <div class="container mt-2">
-        <form>
+        <form enctype="multipart/form-data" name="formRegistration">
             @csrf
             <div class="row ml-3">     
                 <img id="viewProfilePic" width="100" height="100" class="rounded" src="https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" >
@@ -33,21 +33,26 @@
         </form>
     </div>
 </body>
-<script>
-    const inputProfilePic = document.getElementById('profilePic')
-    inputProfilePic.oninput = e =>{
-	
-		const input = e.target;
+@include('crudUser.src.js.layoutAction')
 
-		const reader = new FileReader();
-		reader.onload = function() {
-			const dataURL = reader.result;
-			const output = document.getElementById('viewProfilePic');
-			output.src = dataURL;
-		};
-		reader.readAsDataURL(input.files[0]);
-	};
+<script>
+    document.formRegistration.onsubmit = async e =>{
+        e.preventDefault()
+        const data = new FormData(e.target)
+        const url = "{{route('register.user.do')}}"
+        const options = {         
+            method: "POST",
+            body: new URLSearchParams(data),
+            
+        }
+        alert(options.body)
+        fetch(url, options)
+        .then(response = response.json())
+        .then(data => alert(data.success))
+        .catch(alert("error"))
+    }
 </script>
+
 <style>
     input[type='file'] {
       display: none

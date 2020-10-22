@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\Dashboard;
 use App\Http\Controllers\crudUser\CreateUser;
 use App\Http\Controllers\products\CreateProduct;
 use App\Models\Product;
+use GuzzleHttp\Promise\Create;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,10 @@ Route::prefix('login')->group(function (){
     Route::get('/', [Login::class,'showFormLogin'])->name('login.login');
     Route::post('/do',[Login::class,'login'])->name('login.do');
     Route::match(['get','post'],'/logout',[Login::class,'logout'])->name('login.logout');
-    Route::get('/register/user',[CreateUser::class,'showRegisterForm'])->name('register.admin.form');
+    
+    Route::get('/register/user',[CreateUser::class,'showRegisterForm'])->name('register.user.form');
+    Route::post('/register/user/do',[CreateUser::class, 'new'])->name('register.user.do');
+    Route::resource('/profilePic', CreateUser::class)->names('profilePic');
 });
 
 Route::prefix('admin')->group(function(){
