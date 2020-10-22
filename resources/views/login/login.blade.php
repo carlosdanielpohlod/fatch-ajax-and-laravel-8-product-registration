@@ -21,15 +21,14 @@
             <div id="submitDiv">
                 <button id="submitButton" type="submit" class="fadeIn fourth btn btn-success">Login</button>
             </div>
+              
              <div id="formFooter row">
                 <label id="labelError"><label>
             </div>
-          </form>
-          
-         
-          {{-- <div id="formFooter row">
-            <a class="underlineHover" href="#">Forgot Password?</a>
-          </div> --}}
+          </form>       
+          <div id="formFooter row">
+            <a class="underlineHover" href="{{route('register.admin.form')}}">Register</a>
+          </div>
       
         </div>
     </div>
