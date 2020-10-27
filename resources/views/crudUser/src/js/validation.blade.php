@@ -9,10 +9,11 @@
         let Resto;
         Soma = 0;
         if (strCPF == "00000000000"){ 
+            e.target.style = "color:red"
         }
         for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
         Resto = (Soma * 10) % 11;
-
+        
             if ((Resto == 10) || (Resto == 11))  Resto = 0;
             if (Resto != parseInt(strCPF.substring(9, 10)) ) {
                 
@@ -85,18 +86,3 @@
     }
 </script>
 
-<style>
-    input[type='file'] {
-      display: none
-    }
-    
-    /* Aparência que terá o seletor de arquivo */
-    .label-input {
-      background-color: #3498db;
-      border-radius: 5px;
-      color: #fff;
-      cursor: pointer;
-      margin: 40px;
-      padding: 6px 20px
-    }
-    </style>
