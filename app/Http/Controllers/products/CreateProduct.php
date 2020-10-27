@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\product;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class CreateProduct extends Controller
 {
@@ -16,7 +17,14 @@ class CreateProduct extends Controller
         try{
             
             $product = new Product();
-            $newProduct = $product->new($request);
+            $newProduct = $product->create([
+                'name'=>$request['name'],
+                'email'=> $request['email'],
+                'password' => Hash::make($request['password']),
+                'cpf' => $request['cpf'],
+                'profilePic'=> $request->file('profilePic')->store( $request['email'].'/media')
+                
+            ]);
             $response['success'] = true;
             $response['message'] = 'Ocorreu um erro';
             $response['name'] = $newProduct->name;

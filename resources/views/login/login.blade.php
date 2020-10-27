@@ -27,7 +27,7 @@
             </div>
           </form>       
           <div id="formFooter row">
-            <a class="underlineHover" href="{{route('register.admin.form')}}">Register</a>
+            <a class="underlineHover" href="{{route('register.user.form')}}">Register</a>
           </div>
       
         </div>

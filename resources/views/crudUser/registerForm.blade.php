@@ -4,27 +4,30 @@
 </head>
 <body>
     <div class="container mt-2">
+        <h4> This page do not work </h4>
         <form enctype="multipart/form-data" name="formRegistration">
             @csrf
             <div class="row ml-3">     
                 <img id="viewProfilePic" width="100" height="100" class="rounded" src="https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" >
                 <label class="label-input" for="profilePic" >Chose profile image</label>
-                <input type="file" id="profilePic" name="profilePic">
+                <input type="file" accept="image/png, image/jpeg"id="profilePic" value="https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" name="profilePic">
             </div>
             <div class="row">
                 <div class="col xs-6">
-                    <input name="email" class="form-control" placeholder="Your e-mail">
+                    <input name="email" id="email" class="form-control" value="kkk" placeholder="Your e-mail">
+                    <label style="color:red" id="statusEmail"></label>
                 </div>
                 <div class="col xs-6">
-                    <input name="name" class="form-control" placeholder="Your name">
+                    <input name="name" class="form-control" value="kkk" placeholder="Your name">
                 </div>
             </div>
             <div class="row">
                 <div class="col xs-6">
-                    <input name="cpf" class="form-control"placeholder="Your CPF">
+                    <input name="cpf"  maxlength="11" id="cpf" class="form-control" value="kkk" placeholder="Your CPF">
+                    <label style="color:red" id="statusCpf"></label>
                 </div>
                 <div class="col xs-6">
-                    <input name="password" type="password" class="form-control" placeholder="password">
+                    <input name="password" value="jjjj" type="password" class="form-control" placeholder="password">
                 </div>
             </div>
             <div class="row">
@@ -32,39 +35,8 @@
             </div>
         </form>
     </div>
+    
 </body>
 @include('crudUser.src.js.layoutAction')
+@include('crudUser.src.js.validation')
 
-<script>
-    document.formRegistration.onsubmit = async e =>{
-        e.preventDefault()
-        const data = new FormData(e.target)
-        const url = "{{route('register.user.do')}}"
-        const options = {         
-            method: "POST",
-            body: new URLSearchParams(data),
-            
-        }
-        alert(options.body)
-        fetch(url, options)
-        .then(response = response.json())
-        .then(data => alert(data.success))
-        .catch(alert("error"))
-    }
-</script>
-
-<style>
-    input[type='file'] {
-      display: none
-    }
-    
-    /* Aparência que terá o seletor de arquivo */
-    .label-input {
-      background-color: #3498db;
-      border-radius: 5px;
-      color: #fff;
-      cursor: pointer;
-      margin: 40px;
-      padding: 6px 20px
-    }
-    </style>

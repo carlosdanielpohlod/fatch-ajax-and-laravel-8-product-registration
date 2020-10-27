@@ -28,6 +28,7 @@ Route::prefix('login')->group(function (){
     Route::get('/register/user',[CreateUser::class,'showRegisterForm'])->name('register.user.form');
     Route::post('/register/user/do',[CreateUser::class, 'new'])->name('register.user.do');
     Route::resource('/profilePic', CreateUser::class)->names('profilePic');
+    Route::post('teste',[CreateUser::class,'newTeste'])->name('teste');
 });
 
 Route::prefix('admin')->group(function(){

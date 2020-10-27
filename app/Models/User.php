@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     public $table = 'users';
+    public $timestamps = false;
+    public $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profilePic'
     ];
 
     /**
@@ -49,7 +52,8 @@ class User extends Authenticatable
             'email'=> $data['email'],
             'password' => Hash::make($data['password']),
             'cpf' => $data['cpf'],
-            'profilePic'=> $file->store( $data['email'].'/Media')
+            'profilePic'=> $data->file('profilePic')->store( $data['email'].'/media')
+            
         ]);
     }
 }
