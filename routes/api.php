@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+Route::namespace('Api')->name('api.')->group(function(){
+    Route::prefix('products')->group(function(){
+        Route::get('/',[ProductController::class,'index'])->name('index_products');
+        Route::get('/{id}',[ProductController::class,'show'])->name('single_products');
+
+        Route::post('/', [ProductController::class,'store'])->name('store_products');
+    });
 });
