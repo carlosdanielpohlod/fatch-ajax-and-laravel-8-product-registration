@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Api\ApiError;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,7 +22,30 @@ class ProductController extends Controller
         return response()->json(['data'=>$id]);
     }
     public function store(Request $request){
-        $productData = $request->all();
-        $this->product->create($productData);
+        try{
+            $productData = $request->all();
+            $this->product->create($productData);
+            return response()->json(['msg'=> 'Product has been created'],201);
+        }
+        catch(Exception $e){
+            if(config('app.debug')){
+                return response()->json(ApiError::errorMessage($e->getMessage(), 1010));
+            }
+            return response()->json(ApiError::errorMessage('Houve um erro ao realizar a operação',1010));
+        }
+    }
+    public function update(Request $request, $id){
+        try{
+            $productData = $request->all();
+            $product = $this->product->find($id);
+            $product->update($productData);
+            return response()->json(['msg'=> 'Product has been updated'],201);
+        }
+        catch(Exception $e){
+            if(config('app.debug')){
+                return response()->json(ApiError::errorMessage($e->getMessage(), 1010));
+            }
+            return response()->json(ApiError::errorMessage('Houve um erro ao realizar a operação',1010));
+        }
     }
 }
