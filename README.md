@@ -4,8 +4,15 @@
 <p> You may see ajax examples and interactive card display !</p>
 <p> Thanks for watching the project ;) </p>
 <h3> Dependencies </h3>
+<p> Composer dependence manager, available in https://getcomposer.org/download/ </p>
+<p> Node.js, available in https://nodejs.org/en/download/ </p>
 <p> Laravel Framework 8, available in https://laravel.com/docs/8.x/readme </p>
-<p> Sweet Alert, available in https://sweetalert2.github.io/ </p>
+<p> Sweet Alert, available in https://sweetalert2.github.io/ (CDN utilizable, not install necessary)</p>
+<h3> How to use </h3>
+<p> Open your git bash and clone the repository: git clone https://github.com/carlosdanielpohlod/fatch-ajax-and-laravel-8-product-registration.git </p>
+<p> Execute the <b> composer install </b> and <b> npm install </b> </p>
+<p> ok, now you have the application ready, so execute <b> php artisan migrate:fresh </b> to create the database tables (you shold to create the database before) </p>
+<p> (optional) you can execute <b> php artisan db:seed </b> to create the default user: email@examplo.com.br, password: 12345 </p>
 <h2> About Laravel Framework </h2>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
