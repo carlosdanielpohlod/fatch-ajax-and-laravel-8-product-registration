@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\product;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CreateProduct extends Controller
 {
     public function showFormCreate(){
-        return view('crudProduct.createProduct');
+        if(Auth::check())
+            return view('crudProduct.createProduct');
+        else 
+            return view('login.login');
     }
     public function new(Request $request){
         try{

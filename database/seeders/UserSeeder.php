@@ -6,10 +6,10 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Default User',
             'email' => 'email@example.com',
             'password' => Hash::make('12345'),
-            'profilePic' => 'kkk'
+            'profilePic' => null
         ]);
     }
 }

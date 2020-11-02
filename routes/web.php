@@ -21,7 +21,7 @@ use GuzzleHttp\Promise\Create;
 */
 
 Route::prefix('login')->group(function (){
-    Route::get('/', [Login::class,'showFormLogin'])->name('login.login');
+    Route::get('/form', [Login::class,'showFormLogin'])->name('login.login');
     Route::post('/do',[Login::class,'login'])->name('login.do');
     Route::match(['get','post'],'/logout',[Login::class,'logout'])->name('login.logout');
     
