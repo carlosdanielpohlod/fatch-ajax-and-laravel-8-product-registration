@@ -16,8 +16,8 @@
           
           <form name="loginForm" class="form"  action="{{route('login.do')}}" method="POST">
             @csrf
-            <input type="text" id="email" class="fadeIn second" name="email" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="text" id="email" value="email@example.com" class="fadeIn second" name="email" placeholder="login">
+            <input type="text" id="password" value="12345" class="fadeIn third" name="password" placeholder="password">
             <div id="submitDiv">
                 <button id="submitButton" type="submit" class="fadeIn fourth btn btn-success">Login</button>
             </div>

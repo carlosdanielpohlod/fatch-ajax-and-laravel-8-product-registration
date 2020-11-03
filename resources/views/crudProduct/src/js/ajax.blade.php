@@ -11,6 +11,7 @@
         })   
       }else{
         deleteSpinner()
+        
         Toast.fire({
             icon: 'error',
             title: 'An error has occurred'

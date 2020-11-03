@@ -1,1 +1,1 @@
-'<div  class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' + data.name +' </h5><p class="card-text">'+data.price+'</p></div></div>'
+'<div  class="card" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' + data.name +' </h5><p class="card-text">'+data.price+'</p></div><form action="{{route('product.checkout.form')}}"><input id="idProduct" value=""""+ data.idProduct +"" <button type="submit">Buy</button></form></div>'
