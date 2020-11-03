@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Auth;
 class User_purchase extends Model
 {
     use HasFactory;
-    private $primaryKey = 'id';
-    private $timestamps = false;
-    private $table = 'user_purchase';
-    private $fillable = ['idPurchase','idProduct','idUser','quantity'];
+    public $primaryKey = 'id';
+    public $timestamps = false;
+    public $table = 'user_purchase';
+    public $fillable = ['idPurchase','idProduct','idUser','quantity'];
     public function new($data)
     {
         $this->create([
             'idProduct' => $data['idProduct'],
-            'idUser' => Auth::user()->idUser,
+            'idUser' => Auth::user()->id,
             'quantity' => $data['quantity']
         ]);
     }

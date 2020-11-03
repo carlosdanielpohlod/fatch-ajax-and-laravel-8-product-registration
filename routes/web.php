@@ -43,4 +43,5 @@ Route::prefix('admin/product')->group(function(){
     Route::match(['get','post'],'/list',[Dashboard::class,'showProductList'])->name('product.list');
     Route::post('/list/more',[Dashboard::class,'getMoreProducts'])->name('product.list.more');
     Route::get('/buy/checkout/form',[Buy::class,'showFormCheckout'])->name('product.checkout.form');
+    Route::post('/buy/checkout/do',[Buy::class,'checkout'])->name('product.checkout.do');
 });

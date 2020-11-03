@@ -21,6 +21,8 @@ class Buy extends Controller
     }
     public function checkout(Request $request){
         $user_purchase = new User_purchase();
-        
+        $user_purchase->new($request);
+        // Alert ::toast('Cadastrado','success');
+        return back();
     }
 }

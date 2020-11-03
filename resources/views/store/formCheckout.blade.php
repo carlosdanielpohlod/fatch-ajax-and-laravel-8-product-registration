@@ -10,19 +10,23 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-6">
-                <label for="credit-card">Credit-card number </label>
-                <input class="form-control" id="credit-card" name="cardNumber">
-                <div class="col-xs-3">
-                    <input class="form-control" type="range" name="quantity">
-                </div>
-                <div class="row">
-                    
-                    <button class="btn btn-info"> Buy </button>
-                </div>
-                <div class="row">
-                    <label for="remember-card">Remember my card number </label>
-                    <input id="remember-card" type="checkbox">
-                </div>
+                <form action="{{route('product.checkout.do')}}" method="POST">
+                    <input name="idProduct" value="{{$product->idProduct}}" hidden>
+                    @csrf
+                    <label for="credit-card">Credit-card number </label>
+                    <input class="form-control" id="credit-card" placeholder="card number" name="cardNumber">
+                    <div class="col-xs-3">
+                        <input class="form-control" type="number" placeholder="quantity" name="quantity">
+                    </div>
+                    <div class="row">
+                        
+                        <button type="submit" class="btn btn-info"> Buy </button>
+                    </div>
+                    <div class="row">
+                        <label for="remember-card">Remember my card number </label>
+                        <input id="remember-card" type="checkbox">
+                    </div>
+                </form>
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
