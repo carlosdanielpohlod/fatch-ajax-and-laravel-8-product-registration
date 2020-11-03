@@ -5,6 +5,8 @@
 </head>
 <header>
   @include('admin.src.html.layoutUp')
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="content" content="New product">
 </header>
 <body>
   <div class="container mt-2">
@@ -56,3 +58,5 @@
 @include('crudProduct.src.js.validation')
 @include('crudProduct.src.js.ajax')
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+@include('admin.src.js.currentPageMonitoring')
