@@ -3,7 +3,7 @@
 use App\Http\Controllers\auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\Dashboard;
-
+use App\Http\Controllers\admin\Log;
 use App\Http\Controllers\crudUser\CreateUser;
 use App\Http\Controllers\products\CreateProduct;
 use App\Http\Controllers\products\store\Buy;
@@ -45,3 +45,5 @@ Route::prefix('admin/product')->group(function(){
     Route::get('/buy/checkout/form',[Buy::class,'showFormCheckout'])->name('product.checkout.form');
     Route::post('/buy/checkout/do',[Buy::class,'checkout'])->name('product.checkout.do');
 });
+Route::get('/admin/log/teste/form', [Log::class,'formTeste'])->name('log.teste.form');
+Route::post('/admin/log/teste/do', [Log::class,'teste'])->name('log.teste.do');
