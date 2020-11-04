@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,9 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::delete('/{id}',[ProductController::class,'delete'])->name('delete_products');
         
     });
+    Route::prefix('cart')->group(function(){
+        Route::post('/', [CartController::class,'store'])->name('store_cart');
+    });
+
+    
 });

@@ -59,4 +59,5 @@ class ProductController extends Controller
             return response()->json(ApiError::errorMessage('Any error has ocurred',1012));
         }
     }
+    
 }

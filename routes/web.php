@@ -44,6 +44,7 @@ Route::prefix('admin/product')->group(function(){
     Route::post('/list/more',[Dashboard::class,'getMoreProducts'])->name('product.list.more');
     Route::get('/buy/checkout/form',[Buy::class,'showFormCheckout'])->name('product.checkout.form');
     Route::post('/buy/checkout/do',[Buy::class,'checkout'])->name('product.checkout.do');
+    Route::post('/cart/add', [Buy::class, 'addToCart'])->name('product.addToCart');
 });
 Route::get('/admin/log/teste/form', [Log::class,'formTeste'])->name('log.teste.form');
 Route::post('/admin/log/teste/do', [Log::class,'teste'])->name('log.teste.do');
