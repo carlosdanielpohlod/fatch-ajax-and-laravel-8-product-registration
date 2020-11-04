@@ -4,6 +4,7 @@ namespace App\Http\Controllers\products\store;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Favorite;
 use App\Models\Product;
 use App\Models\Product_tag;
 use App\Models\User_purchase;
@@ -32,11 +33,11 @@ class Buy extends Controller
         // Alert ::toast('Cadastrado','success');
         return back();
     }
-    public function addToCart(Request $request){
+    public function addToFavorite(Request $request){
         try{
-            $cart = new Cart();
-            // $cart 
-            $cart->new($request);
+            $favorite = new Favorite();
+            // $favorite 
+            $favorite->new($request);
             $response['success'] = true;
             return response()->json($response);
         }catch(Exception $exception){

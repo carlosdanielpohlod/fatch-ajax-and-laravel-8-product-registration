@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class Cart extends Model
+class Favorite extends Model
 {
     use HasFactory;
     public $primaryKey = 'id';
     public $timestamps = false;
-    public $table = 'cart';
-    public $fillable = ['id','idProduct','quantity','idUser'];
+    public $table = 'favorite';
+    public $fillable = ['id','idProduct','idUser'];
     public function new($data){
         $this->create([
             'idProduct' => $data['idProduct'],
-            'quantity' => 1,
+            
             'idUser' => 1
         ]);
     }

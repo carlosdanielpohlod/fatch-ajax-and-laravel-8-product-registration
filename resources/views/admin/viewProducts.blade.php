@@ -41,24 +41,7 @@
 
 
 
-<script>
-  function addToCart(e){
-    e.preventDefault()
-    const data = new FormData(e.target)
-      const options = {
-        method: "POST",
-        body: new URLSearchParams(data),
-        url:"{{route('product.addToCart')}}"
-      }
-      
-      fetch(options.url, options)
-      .then(response => response.json())
-      .then(data => alert("adicionado"))
-     
-    
 
-  }
-</script>
 <script>
   let Toast = Swal.mixin({
     toast: true,
@@ -71,5 +54,28 @@
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
 })
+</script>
+<script>
+  function addToCart(e){
+    e.preventDefault()
+    const data = new FormData(e.target)
+      const options = {
+        method: "POST",
+        body: new URLSearchParams(data),
+        url:"{{route('product.addToFavorite')}}"
+      }
+      
+      fetch(options.url, options)
+      .then(response => response.json())
+      .then(data => {
+        Toast.fire({
+                icon: 'success',
+                title: 'Favorited'
+            }) 
+      })
+     
+    
+
+  }
 </script>
 @include('admin.src.js.currentPageMonitoring')
