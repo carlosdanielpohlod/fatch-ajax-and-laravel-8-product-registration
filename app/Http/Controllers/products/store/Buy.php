@@ -4,6 +4,7 @@ namespace App\Http\Controllers\products\store;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Product_tag;
 use App\Models\User_purchase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +13,13 @@ class Buy extends Controller
 {
     public function showFormCheckout(Request $request){
         if(Auth::check()){
-            $product = Product::where('idProduct',1)->first();
+            $product = Product::where('idProduct',$request['idProduct'])->first();
 
-            return view('store.formCheckout',compact('product'));
+            $product_tags = Product_tag::select('tag.name','tag.id')
+            ->join('tag','tag.id','product_tag.idTag')
+            ->where('product_tag.idProduct',$request['idProduct'])->get();
+           
+            return view('store.formCheckout',compact('product','product_tags'));
         }else{
             return view('login.login');
         }

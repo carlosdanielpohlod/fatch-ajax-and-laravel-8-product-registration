@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{asset('crudProduct/src/css/spinner.css')}}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="content" content="@foreach ($product_tags as $tag){{$tag->name}} @endforeach">
 </head>
 <header>
   @include('admin.src.html.layoutUp')
@@ -33,7 +36,12 @@
                     <li class="list-group-item active">Checkout informations</li>
                     <li class="list-group-item">name: {{$product->name}}</li>
                     <li class="list-group-item">price: {{$product->price}}</li>
-                    
+                    <li class="list-group-item active">Product Tags</li>
+                    <li class="list-group-item">
+                        @foreach ($product_tags as $tag)
+                        <span class="badge badge-info">{{$tag->name}}</span> 
+                        @endforeach
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,3 +51,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    let Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+  })
+  </script>
+  @include('admin.src.js.currentPageMonitoring')
