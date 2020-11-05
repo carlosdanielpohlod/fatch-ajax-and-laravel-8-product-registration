@@ -12,4 +12,9 @@ class Product_tag extends Model
     public $timestamps = false;
     public $table = 'product_tag';
     public $fillable = ['idProduct','idTag'];
+    public function getProductTags($idProduct){
+        return $this->select('tag.name','tag.id')
+            ->join('tag','tag.id','product_tag.idTag')
+            ->where('product_tag.idProduct',$idProduct)->get();
+    }
 }

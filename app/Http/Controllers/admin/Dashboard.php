@@ -14,10 +14,13 @@ class Dashboard extends Controller
     public function showDashboard(){
         if(Auth::check()){
             $user = Auth::user();
-            return view('admin.dashboard', compact('user'));
+            $products = Product::all();
+            $products = json_encode($products);
+            return view('admin.dashboard', compact('user','products'));
         }
         
     }
+    
     public function showProductList(){
         if(Auth::check()){
             $product = new Product();

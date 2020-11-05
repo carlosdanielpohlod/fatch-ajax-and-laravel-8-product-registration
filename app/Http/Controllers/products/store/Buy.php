@@ -16,11 +16,10 @@ class Buy extends Controller
 {
     public function showFormCheckout(Request $request){
         if(Auth::check()){
+            $objproduct_tag = new Product_tag();
             $product = Product::where('idProduct',$request['idProduct'])->first();
 
-            $product_tags = Product_tag::select('tag.name','tag.id')
-            ->join('tag','tag.id','product_tag.idTag')
-            ->where('product_tag.idProduct',$request['idProduct'])->get();
+            $product_tags = $objproduct_tag->getProductTags($request['idProduct']);
            
             return view('store.formCheckout',compact('product','product_tags'));
         }else{
