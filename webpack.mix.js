@@ -15,4 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         //
     ]);
+mix.js('resources/js/cardFavoriteAjax.js','public/js')
+mix.js('resources/js/currentPageAjax.js','public/js')
+mix.js('resources/js/findMoreProductsAjax.js','public/js')
 mix.styles(['resources/views/crudProduct/src/css/spinner.css','public/crudProduct/src/css/spinner.css']).version();

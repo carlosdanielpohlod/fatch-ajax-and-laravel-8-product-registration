@@ -1,6 +1,6 @@
 <script>
 
-    function createCard(json){
+function createCard(json){
       
       for(let i = 0;  i < json.length; i++){
         let data = json[i]
@@ -8,6 +8,6 @@
         containerCards.insertAdjacentHTML('beforeend',html)
       }
     }
-
+    
     
 </script>

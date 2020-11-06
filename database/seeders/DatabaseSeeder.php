@@ -34,6 +34,18 @@ class DatabaseSeeder extends Seeder
         ['name' => 'esporte']);
         DB::table('tag')->insert(
         ['name' => 'praia']);
+        DB::table('tag')->insert(
+            ['name' => 'chinelo']);
+        DB::table('tag')->insert(
+            ['name' => 'rasteirinha']);
+        DB::table('tag')->insert(
+            ['name' => 'verão']);
+        DB::table('tag')->insert(
+                ['name' => 'inverno']);
+        DB::table('tag')->insert(
+            ['name' => 'viamarte']);
+        DB::table('tag')->insert(
+            ['name' => 'all star']);
         DB::table('products')->insert([
             'idProduct' => 100,
             'name' => 'product default',

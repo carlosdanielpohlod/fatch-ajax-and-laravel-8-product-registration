@@ -7,6 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
+          <a class="nav-link" href="{{route('admin.dashboard')}}">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" href="{{route('product.new')}}">New Product <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">

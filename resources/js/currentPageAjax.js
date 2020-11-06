@@ -1,17 +1,4 @@
 
-const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-})
-
-
 let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 const content = document.querySelector('meta[name="content"]').getAttribute('content');
 window.onload = e =>{
@@ -36,7 +23,7 @@ window.onload = e =>{
         if(data.success == true){
             Toast.fire({
                 icon: 'success',
-                title: 'Open page log saved'
+                title: 'Opened page log saved'
             })  
         }else{
             console.log(data.error, data.info)

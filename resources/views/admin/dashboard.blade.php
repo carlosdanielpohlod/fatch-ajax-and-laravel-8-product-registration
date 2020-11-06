@@ -8,7 +8,7 @@
   @include('admin.src.html.layoutUp')
 </header>
 <body>
-  <div id="containerCards" class="mt-2">
+  <div id="containerCards" class="container mt-2">
   </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>

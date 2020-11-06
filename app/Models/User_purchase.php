@@ -13,11 +13,19 @@ class User_purchase extends Model
     public $timestamps = false;
     public $table = 'user_purchase';
     public $fillable = ['idPurchase','idProduct','idUser','quantity'];
+    // public function __construct()
+    // {   
+    //     if(! Auth::check()){
+            
+    //         return response()->json(['error' => 'you does not logged in']);
+    //     }
+        
+    // }
     public function new($data)
     {
-        $this->create([
+        return $this->create([
             'idProduct' => $data['idProduct'],
-            'idUser' => Auth::user()->id,
+            'idUser' =>  Auth::user()->id,
             'quantity' => $data['quantity']
         ]);
     }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\BuyController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
@@ -29,9 +31,10 @@ Route::namespace('Api')->name('api.')->group(function(){
         Route::delete('/{id}',[ProductController::class,'delete'])->name('delete_products');
         
     });
-    Route::prefix('cart')->group(function(){
-        Route::post('/', [CartController::class,'store'])->name('store_cart');
+    Route::prefix('buy')->group(function(){
+        Route::match(['get','post'],'/', [BuyController::class,'store'])->name('store_buy')->middleware('apiJwt');
+        
     });
-
+    Route::post('auth/login', [AuthController::class,'login']);
     
 });
