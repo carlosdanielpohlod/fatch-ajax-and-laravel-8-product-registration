@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function(){
 });
 Route::prefix('admin/product/register')->group(function(){
     Route::match(['get', 'post'],'/new',[CreateProduct::class,'showFormCreate'])->name('product.new');
+    Route::resource('/productImage', CreateProduct::class)->names('productImage');
     Route::post('/new/do',[CreateProduct::class,'new'])->name('product.new.do');
 });
 Route::prefix('admin/product')->group(function(){

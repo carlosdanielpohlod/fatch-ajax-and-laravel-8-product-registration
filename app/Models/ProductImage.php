@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ProductImage extends Model
 {
     use HasFactory;
-    private $primaryKey = 'idImage';
-    private $timestamps = false;
-    private $table = 'productimage';
-    private $fillable = ['idImage','url','idProduct'];
+    public $primaryKey = 'idImage';
+    public $timestamps = false;
+    public $table = 'productimage';
+    public $fillable = ['idImage','url','idProduct'];
 
     public function productImage($idProduct){
         return $this->where('idProductImage',$idProduct)->get();

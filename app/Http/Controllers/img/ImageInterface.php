@@ -6,5 +6,6 @@ namespace App\Http\Controllers\img;
 
 interface ImageInterface 
 {
-    public function imageByForeignKey($productForeignKey);
+    public function getByForeignKey($productForeignKey);
+    public function save($data);
 }
