@@ -26,7 +26,7 @@ class CreateProduct extends Controller
             
             $product = new Product();
             $newProduct = $product->new($request);
-            // $this->fileController->new($request);
+            $this->fileController->new($request);
             
             $response['success'] = true;
             $response['name'] = $newProduct->name;
