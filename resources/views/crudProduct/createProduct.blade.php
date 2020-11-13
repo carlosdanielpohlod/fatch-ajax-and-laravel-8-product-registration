@@ -12,7 +12,7 @@
   <div class="container mt-2">
       <div class="row">
         <div class="col-md-6">
-          <form name="newProduct" method="post" class="form-row" enctype="multipart/form-data">
+        <form name="newProduct" action="{{route('product.new.do')}}"method="POST" class="form-row" enctype="multipart/form-data">
               @csrf
               <div class="col-xs-6">
                 <input type="text" name="name" id="name" class="form-control" placeholder="Title" />
@@ -26,7 +26,7 @@
                 <input type="file" name="productImage" id="productImage" class="form-control" placeholder="productImage" />
               </div>
               <div id="submitDiv">
-                <button class="btn btn-success" id="submitButton">Save</button>
+                <button class="btn btn-success" type="submit" id="submitButton">Save</button>
               </div>
 
           </form>
@@ -62,7 +62,7 @@
 @include('crudProduct.src.js.validation')
 {{-- @include('crudProduct.src.js.ajax') --}}
 @include('admin.src.js.currentPageMonitoring')
-<script>
+{{-- <script>
   
   
   function msgResponse(data){
@@ -110,4 +110,4 @@
       
        
   }
-</script>
+</script> --}}

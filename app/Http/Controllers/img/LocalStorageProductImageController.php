@@ -13,7 +13,7 @@ class LocalStorageProductImageController extends Controller implements ImageInte
     public $path;
     public function __construct(){
         $this->productImage = new ProductImage();
-        $this->path =  'product';
+        
     }
 
     public function getByForeignKey($productForeignKey)
@@ -21,10 +21,10 @@ class LocalStorageProductImageController extends Controller implements ImageInte
         return $this->productImage->productImage($productForeignKey);
     }
 
-    public function save($data){
+    public function save($data, $id){
         $file = $data->file('productImage');
         
-        $fillable = ['url' => $file->store($this->path.'/'.$data['idProduct']),'idProduct' => $data['idProduct']];
+        $fillable = ['url' => $file->store($this->path.'/'.$id),'idProduct' => $id];
         $this->productImage::create($fillable);
     }
 }

@@ -58,7 +58,7 @@
     }
     
 </script>
-<script>
+{{-- <script>
     
     document.formRegistration.onsubmit = async e =>{
         e.preventDefault()
@@ -84,5 +84,5 @@
             console.log(error)
         })
     }
-</script>
+</script> --}}
 

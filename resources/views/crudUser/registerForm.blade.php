@@ -4,8 +4,8 @@
 </head>
 <body>
     <div class="container mt-2">
-        <h4> This page do not work </h4>
-        <form enctype="multipart/form-data" name="formRegistration">
+        {{-- <h4> This page do not work </h4> --}}
+        <form enctype="multipart/form-data" method="POST" name="formRegistration" action="{{route('register.user.do')}}">
             @csrf
             <div class="row ml-3">     
                 <img id="viewProfilePic" width="100" height="100" class="rounded" src="https://www.promoview.com.br/uploads/images/unnamed%2819%29.png" >
@@ -14,20 +14,20 @@
             </div>
             <div class="row">
                 <div class="col xs-6">
-                    <input name="email" id="email" class="form-control" value="kkk" placeholder="Your e-mail">
+                    <input name="email" id="email" class="form-control" value="teste@gmail.com" placeholder="Your e-mail">
                     <label style="color:red" id="statusEmail"></label>
                 </div>
                 <div class="col xs-6">
-                    <input name="name" class="form-control" value="kkk" placeholder="Your name">
+                    <input name="name" class="form-control" value="user name" placeholder="Your name">
                 </div>
             </div>
             <div class="row">
                 <div class="col xs-6">
-                    <input name="cpf"  maxlength="11" id="cpf" class="form-control" value="kkk" placeholder="Your CPF">
+                    <input name="cpf"  maxlength="11" id="cpf" class="form-control" value="09087242921" placeholder="Your CPF">
                     <label style="color:red" id="statusCpf"></label>
                 </div>
                 <div class="col xs-6">
-                    <input name="password" value="jjjj" type="password" class="form-control" placeholder="password">
+                    <input name="password" value="12345" type="password" class="form-control" placeholder="password">
                 </div>
             </div>
             <div class="row">

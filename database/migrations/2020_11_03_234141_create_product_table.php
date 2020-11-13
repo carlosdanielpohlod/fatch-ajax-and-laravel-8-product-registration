@@ -18,7 +18,10 @@ class CreateProductTable extends Migration
             $table->string('name',20);
             $table->float('price');
             $table->biginteger('idProvider')->unsigned();
+            $table->bigInteger('idCategory')->unsigned();
             $table->foreign('idProvider')->references('id')->on('providers');
+            $table->foreign('idCategory')->references('idCategory')->on('category');
+
         });
     }
 

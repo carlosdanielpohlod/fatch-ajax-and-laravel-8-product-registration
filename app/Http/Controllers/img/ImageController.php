@@ -16,7 +16,7 @@ class ImageController extends Controller
         return $this->imageManager->getByForeignKey($idProduct);
 
     }
-    public function new($data){
-        return $this->imageManager->save($data);
+    public function new($data, $id){
+        return $this->imageManager->save($data, $id);
     }
 }

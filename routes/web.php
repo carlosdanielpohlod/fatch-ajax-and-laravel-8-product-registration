@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\Dashboard;
 use App\Http\Controllers\admin\Log;
 use App\Http\Controllers\crudUser\CreateUser;
+
+use App\Http\Controllers\machineLearning\Apriori_Cart;
 use App\Http\Controllers\products\CreateProduct;
 use App\Http\Controllers\products\store\Buy;
 use App\Models\Product;
@@ -38,7 +40,8 @@ Route::prefix('admin')->group(function(){
 Route::prefix('admin/product/register')->group(function(){
     Route::match(['get', 'post'],'/new',[CreateProduct::class,'showFormCreate'])->name('product.new');
     Route::resource('/productImage', CreateProduct::class)->names('productImage');
-    Route::post('/new/do',[CreateProduct::class,'new'])->name('product.new.do');
+    // Route::post('/new/do',[CreateProduct::class,'new'])->name('product.new.do');
+    Route::post('/new/do',[CreateProduct::class,'teste'])->name('product.new.do');
 });
 Route::prefix('admin/product')->group(function(){
     Route::match(['get','post'],'/list',[Dashboard::class,'showProductList'])->name('product.list');
@@ -49,3 +52,6 @@ Route::prefix('admin/product')->group(function(){
 });
 Route::get('/admin/log/teste/form', [Log::class,'formTeste'])->name('log.teste.form');
 Route::post('/admin/log/teste/do', [Log::class,'teste'])->name('log.teste.do');
+
+
+Route::match(['get','post'],'/apriori',[Apriori_Cart::class,'suggestProduct']);

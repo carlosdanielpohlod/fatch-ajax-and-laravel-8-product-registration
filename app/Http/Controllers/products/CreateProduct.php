@@ -20,13 +20,22 @@ class CreateProduct extends Controller
         $method = new LocalStorageProductImageController();
         $this->fileController =new ImageController($method);
     }
-    
+    public function teste(Request $request){
+        try{
+            $product = new Product();
+            $newProduct = $product->new($request);
+            $this->fileController->new($request, $newProduct->idProduct);
+            return back();
+        }catch(Exception $e){
+            echo $e;
+        }
+    }
     public function new(Request $request){
         try{
             
             $product = new Product();
             $newProduct = $product->new($request);
-            $this->fileController->new($request);
+            $this->fileController->new($request, $newProduct->idProduct);
             
             $response['success'] = true;
             $response['name'] = $newProduct->name;
