@@ -19,18 +19,19 @@ class Apriori_Cart extends Controller
 
         foreach($cart as $item){
             
-            $item = Purchase_item::select('purchase_item.idProduct')
+            $aux = Purchase_item::select('purchase_item.idProduct')
             ->join('user_purchase','user_purchase.idPurchase','purchase_item.idPurchase')
             ->where('purchase_item.idPurchase',$item['idPurchase'])
             ->get();
-            array_push($samples, $item);
+            array_push($samples, $aux);
+            echo $aux;
         }
         // print_r($samples);
         
-        $labels = [];
+        // $labels = [];
         
-        $associator = new Apriori($support = 0.5, $confidence = 0.5);
-         $associator->train($samples, $labels);
-        $associator->getRules();
+        // $associator = new Apriori($support = 0.5, $confidence = 0.5);
+        //  $associator->train($samples, $labels);
+        // $associator->getRules();
     }
 }

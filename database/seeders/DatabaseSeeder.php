@@ -68,6 +68,15 @@ class DatabaseSeeder extends Seeder
         DB::table('category')->insert([
             'name' => 'pulseira'
         ]);
+        DB::table('category')->insert([
+            'name' => 'festa'
+        ]);
+        DB::table('category')->insert([
+            'name' => 'punk'
+        ]);
+        DB::table('category')->insert([
+            'name' => 'automotivo'
+        ]);
         DB::table('tag')->insert(
         ['id'=> 1,'name' => 'sapato']);
         DB::table('tag')->insert(
@@ -90,108 +99,17 @@ class DatabaseSeeder extends Seeder
             ['name' => 'all star']);
             DB::table('tag')->insert(
                 ['name' => 'a prova d agua']);
-        DB::table('products')->insert([
-            'idProduct' => 3,
-            'name' => 'product default',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 1
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 1,
-            'name' => 'produto 2',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 2
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 2,
-            'name' => 'produto 3',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 3
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 4,
-            'name' => 'produto 4',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 4
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 5,
-            'name' => 'produto 5',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 2
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 6,
-            'name' => 'produto 6',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 3
-        ]);
-        DB::table('products')->insert([
-            'idProduct' => 7,
-            'name' => 'produto 7',
-            'price' => '23',
-            'idProvider' => 1,
-            'idCategory' => 2
-        ]);
-
-
+        
+        for ($i = 1; $i < 200; $i ++){
+            DB::table('products')->insert([
+                
+                'name' => 'produto '. $i,
+                'price' => '23',
+                'idProvider' => 1,
+                'idCategory' => \random_int(1,6)
+            ]);
+        }
 // 
-DB::table('products')->insert([
-    'idProduct' => 8,
-    'name' => 'product 8',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 2
-]);
-DB::table('products')->insert([
-    'idProduct' => 9,
-    'name' => 'produto 9',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 1
-]);
-DB::table('products')->insert([
-    'idProduct' => 10,
-    'name' => 'produto 3',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 5
-]);
-DB::table('products')->insert([
-    'idProduct' => 11,
-    'name' => 'produto 4',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 1
-]);
-DB::table('products')->insert([
-    'idProduct' => 12,
-    'name' => 'produto 5',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 4
-]);
-DB::table('products')->insert([
-    'idProduct' => 13,
-    'name' => 'produto 6',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 1
-]);
-DB::table('products')->insert([
-    'idProduct' => 14,
-    'name' => 'produto 7',
-    'price' => '23',
-    'idProvider' => 1,
-    'idCategory' => 2
-]);
-
 
 
 
@@ -207,75 +125,21 @@ DB::table('products')->insert([
             'idProduct' => 3,
             'idTag' => 3
         ]);
-
-        DB::table('user_purchase')->insert([
-            'idPurchase' => 1,
-            'idUser' => 1,
-        
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 1,
-            'idProduct' => 1,
-            'quantity' => 4
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 1,
-            'idProduct' => 2,
-            'quantity' => 2
-
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 1,
-            'idProduct' => 3,
-            'quantity' => 4
-        ]);
-
-
-        DB::table('user_purchase')->insert([
-            'idPurchase' => 2,
-            'idUser' => 3,
-        
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 2,
-            'idProduct' => 3,
-            'quantity' => 4
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 2,
-            'idProduct' => 5,
-            'quantity' => 2
-
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 2,
-            'idProduct' => 7,
-            'quantity' => 4
-        ]);
-
-
-
-        DB::table('user_purchase')->insert([
-            'idPurchase' => 3,
-            'idUser' => 4,
-        
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 3,
-            'idProduct' => 1,
-            'quantity' => 4
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 3,
-            'idProduct' => 8,
-            'quantity' => 2
-
-        ]);
-        DB::table('purchase_item')->insert([
-            'idPurchase' => 3,
-            'idProduct' => 7,
-            'quantity' => 4
-        ]);
-
+        for($i = 0; $i < 40; $i++){
+            DB::table('user_purchase')->insert([
+                
+                
+                'idUser' => random_int(1,5)
+            
+            ]);
+            
+        }
+        for($i = 0; $i < 300; $i++){
+            DB::table('purchase_item')->insert([
+                'idPurchase' => random_int(1,29),
+                'idProduct' => random_int(1,199),
+                'quantity' => 4
+            ]);
+        }
     }
 }
