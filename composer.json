@@ -14,7 +14,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        
+        "laravel/ui": "^3.1",
         "tymon/jwt-auth": "dev-develop#e190b6a75372e7e5e3a6d2cf0e4456313412299f"
     },
     "require-dev": {

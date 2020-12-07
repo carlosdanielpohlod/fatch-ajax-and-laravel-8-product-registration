@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReatingTable extends Migration
+class CreateProductClassTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateReatingTable extends Migration
      */
     public function up()
     {
-        Schema::create('reating', function (Blueprint $table) {
-            $table->id('idReating');
-            $table->integer('evaluation');
+        Schema::create('productClass', function (Blueprint $table) {
             $table->bigInteger('idProduct')->unsigned();
-            $table->bigInteger('idUser')->unsigned();
+            $table->integer('classe');
             $table->foreign('idProduct')->references('idProduct')->on('products');
-            $table->foreign('idUser')->references('id')->on('users');
-            $table->timestamp('date');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateReatingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reating');
+        Schema::dropIfExists('product_class');
     }
 }

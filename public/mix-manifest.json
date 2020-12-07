@@ -1,7 +1,3 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/cardFavoriteAjax.js": "/js/cardFavoriteAjax.js",
-    "/js/currentPageAjax.js": "/js/currentPageAjax.js",
-    "/js/findMoreProductsAjax.js": "/js/findMoreProductsAjax.js"
+    "/js/app.js": "/js/app.js"
 }

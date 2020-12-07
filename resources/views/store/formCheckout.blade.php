@@ -13,7 +13,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-6">
-                <form action="{{route('product.checkout.do')}}" method="POST">
+                <form id="formCheckout" action="{{route('product.checkout.do')}}" method="POST">
                     <input name="idProduct" value="{{$product->idProduct}}" hidden>
                     @csrf
                     <label for="credit-card">Credit-card number </label>
@@ -45,12 +45,49 @@
                 </ul>
             </div>
         </div>
+        <h3> Quem comprou o "{{$product->name}}" também gostou desses produtos </h3>
+        <div class="row mt-2 jumbotron" id="containerCards">
+            
+            
+        </div>
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    const containerCards = document.getElementById("containerCards")
+</script>
+@include('admin.src.js.animation')
+
+<script>
+    
+    function getSuggestProduct(){
+        
+        const idProduct = "{{$product->idProduct}}"
+        const url = "{{route('ml.suggestProduct')}}"
+        const formCheckout = document.getElementById("formCheckout");
+        const data = new FormData(formCheckout)
+        
+        
+        const options = {
+            method: "POST",
+            body: new URLSearchParams(data),
+            headers: new Headers({
+               
+                "X-CSRF-TOKEN": "{{ csrf_token() }}",
+                
+              })
+        }
+        fetch(url, options)
+        .then(response => response.json())
+        .then(data => createCard(data.products))
+        
+    }
+    getSuggestProduct()
+</script>
+
 <script>
     let Toast = Swal.mixin({
       toast: true,

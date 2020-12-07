@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\Log;
 use App\Http\Controllers\crudUser\CreateUser;
 
 use App\Http\Controllers\machineLearning\Apriori_Cart;
+use App\Http\Controllers\machineLearning\ClassificationProducts;
 use App\Http\Controllers\products\CreateProduct;
 use App\Http\Controllers\products\store\Buy;
 use App\Models\Product;
@@ -49,9 +50,27 @@ Route::prefix('admin/product')->group(function(){
     Route::get('/buy/checkout/form',[Buy::class,'showFormCheckout'])->name('product.checkout.form');
     Route::post('/buy/checkout/do',[Buy::class,'checkout'])->name('product.checkout.do');
     Route::post('/favorite/add', [Buy::class, 'addToFavorite'])->name('product.addToFavorite');
+    
 });
+
+Route::prefix('ml')->group(function(){
+    Route::match(['get','post'],'/suggestProduct',[Buy::class,'suggestProduct'])->name('ml.suggestProduct');
+    Route::match(['get','post'],'/similarProductsProducts',[Buy::class,'suggestProduct'])->name('ml.suggestProduct');
+    
+    
+});
+
 Route::get('/admin/log/teste/form', [Log::class,'formTeste'])->name('log.teste.form');
 Route::post('/admin/log/teste/do', [Log::class,'teste'])->name('log.teste.do');
 
 
-Route::match(['get','post'],'/apriori',[Apriori_Cart::class,'suggestProduct']);
+// Route::match(['get','post'],'/apriori',[Buy::class,'teste']);
+Route::match(['get','post'],'/kmeans',[Buy::class,'teste']);
+
+Route::get('/testes/{id}',[ClassificationProducts::class,'teste']);
+
+Route::get('/semelhantes/{id}',[ClassificationProducts::class,'getSemelhantes']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

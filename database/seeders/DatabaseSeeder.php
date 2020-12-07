@@ -50,96 +50,109 @@ class DatabaseSeeder extends Seeder
             'name' => 'nome',
             'cnpj' => '9873'
         ]);
-        DB::table('category')->insert([
-            'name' => 'calçado'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'camisa'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'camiseta'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'relogio'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'shorts'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'pulseira'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'festa'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'punk'
-        ]);
-        DB::table('category')->insert([
-            'name' => 'automotivo'
-        ]);
-        DB::table('tag')->insert(
-        ['id'=> 1,'name' => 'sapato']);
-        DB::table('tag')->insert(
-        ['name' => 'trilha']);
-        DB::table('tag')->insert(
-        ['name' => 'esporte']);
-        DB::table('tag')->insert(
-        ['name' => 'praia']);
-        DB::table('tag')->insert(
-            ['name' => 'chinelo']);
-        DB::table('tag')->insert(
-            ['name' => 'rasteirinha']);
-        DB::table('tag')->insert(
-            ['name' => 'verão']);
-        DB::table('tag')->insert(
-                ['name' => 'inverno']);
-        DB::table('tag')->insert(
-            ['name' => 'viamarte']);
-        DB::table('tag')->insert(
-            ['name' => 'all star']);
-            DB::table('tag')->insert(
-                ['name' => 'a prova d agua']);
+
+        $categorias = ['calcado' ,'camisa','camiseta' ,'relogio','shorts' ,'pulseira' ,'festa' ,'punk' ,'automotivo'  ,'eletrodomestico'];
+        $tamCategorias = sizeof($categorias);
+        for($i = 0; $i < $tamCategorias; $i ++){
+            DB::table('category')->insert([
+                'name' => $categorias[$i]
+            ]);
+        }
         
-        for ($i = 1; $i < 200; $i ++){
+        
+        $tags = ['Couro','Original','Natal','Lancamento','chinelo','rasteirinha','verao', 'inverno', 'a prova d agua','iphone','creme','country','Teen','Vintage','American','Importado','Escolar','Replica','Asiatico'];
+
+        $tamTags = sizeof($tags);
+        for($i = 0; $i < $tamTags; $i ++){
+            DB::table('tag')->insert([
+                'name' => $tags[$i]
+            ]);
+        }
+
+        $marcaCalcados = ['Viamart','Coca cola','Umbro','Puma','Adidas','Nike','Olimpicus','Everlast','All star'];
+        $marcaRoupas = [
+        ' Chanel. Say Famous. ',
+        'Gucci. Pinterest. ',
+        'Burberry. FFW. ',
+        'Dolce & Gabbana. Notibras. ',
+        'Valentino. Social 1. ',
+        'Zara. Flashmode. ',
+        'Uniqlo. Incrível. ',
+        'H&M. Portugal Textil',
+        'Nike',
+        'Addidas','Zaro','Cravo e Canela'];
+        $marcas = array_merge($marcaCalcados, $marcaRoupas);
+        for($i = 1; $i < sizeof($marcaCalcados); $i ++){
+            DB::table('productBrand')->insert(
+                ['name' => $marcaCalcados[$i]]
+
+            );
+            
+        }       
+        for($i = 1; $i < sizeof($marcaRoupas); $i ++){
+            DB::table('productBrand')->insert(
+                ['name' => $marcaRoupas[$i]]
+
+            );
+            
+        }            
+        
+        $numBrands = sizeof($marcaCalcados) + sizeof($marcaRoupas);
+
+        for ($i = 1; $i < 100; $i ++){
+            $jaInseridos = [];
+            $idCategoria = \random_int(1,$tamCategorias - 1);
+            $idBrand = \random_int(1,$numBrands - 2);
             DB::table('products')->insert([
                 
-                'name' => 'produto '. $i,
-                'price' => '23',
+                'name' => ''.$categorias[$idCategoria] . $marcas[$idBrand],
+                'price' => \random_int(50,500),
                 'idProvider' => 1,
-                'idCategory' => \random_int(1,6)
+                'idCategory' => $idCategoria,
+                'idProductBrand' => $idBrand
             ]);
+            // $quantidade = \random_int(2,6);
+            for($j = 1; $j < 4; $j++){
+                $idTag = random_int(1,$tamTags - 1);
+                while(in_array($idTag,$jaInseridos)){
+                    $idTag = random_int(1,$tamTags - 1);
+                }
+                DB::table('product_tag')->insert([
+                    'idProduct' => $i,
+                    'idTag' => $idTag
+                ]);
+                if(!in_array($idTag,$jaInseridos))
+                    $jaInseridos[] = $idTag;
+            }
         }
 // 
 
 
-
-        DB::table('product_tag')->insert([
-            'idProduct' => 1,
-            'idTag' => 1
-        ]);
-        DB::table('product_tag')->insert([
-            'idProduct' => 2,
-            'idTag' => 1
-        ]); 
-        DB::table('product_tag')->insert([
-            'idProduct' => 3,
-            'idTag' => 3
-        ]);
-        for($i = 0; $i < 40; $i++){
+        for($i = 1; $i < 20; $i++){
             DB::table('user_purchase')->insert([
                 
-                
+                'idPurchase' => $i,
                 'idUser' => random_int(1,5)
             
             ]);
             
+            $products = [];
+            $id = random_int(1,99);
+            $products[] = $id;
+            for($j = 0; $j < 5; $j++){
+                while (in_array($id, $products)){
+                    $id = random_int(1,99);
+                }
+                $products[] = $id;
+                foreach($products as $product){
+                    DB::table('purchase_item')->insert([
+                        'idPurchase' => $i,
+                        'idProduct' => $product,
+                        'quantity' => 4
+                    ]);
+                }
+            }
         }
-        for($i = 0; $i < 300; $i++){
-            DB::table('purchase_item')->insert([
-                'idPurchase' => random_int(1,29),
-                'idProduct' => random_int(1,199),
-                'quantity' => 4
-            ]);
-        }
+        
     }
 }
