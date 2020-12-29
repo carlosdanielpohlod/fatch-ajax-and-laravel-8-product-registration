@@ -17,8 +17,7 @@ class CreateProductTable extends Migration
             $table->id('idProduct');
             $table->string('name');
             $table->float('price');
-            $table->integer('quantityStorage')->default(1);
-    
+            
             $table->biginteger('idProvider')->unsigned();
             $table->bigInteger('idCategory')->unsigned();
             $table->bigInteger('idProductBrand')->unsigned();

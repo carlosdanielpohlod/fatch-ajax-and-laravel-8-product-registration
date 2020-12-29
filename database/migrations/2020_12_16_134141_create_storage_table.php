@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductClassTable extends Migration
+class CreateStorageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateProductClassTable extends Migration
      */
     public function up()
     {
-        Schema::create('productClass', function (Blueprint $table) {
+        Schema::create('storage', function (Blueprint $table) {
             $table->bigInteger('idProduct')->unsigned();
-            $table->integer('class');
+            $table->integer('quantity')->default(1);
+
             $table->foreign('idProduct')->references('idProduct')->on('products');
         });
     }
@@ -27,6 +28,6 @@ class CreateProductClassTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_class');
+        Schema::dropIfExists('storage');
     }
 }

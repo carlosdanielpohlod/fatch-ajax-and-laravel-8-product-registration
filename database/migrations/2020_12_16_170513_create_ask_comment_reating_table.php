@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReatingTable extends Migration
+class CreateAskCommentReatingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateReatingTable extends Migration
      */
     public function up()
     {
-        Schema::create('reating', function (Blueprint $table) {
-            $table->id('idReating');
-            $table->integer('evaluation');
-            $table->bigInteger('idProduct')->unsigned();
+        Schema::create('ask_comment_reating', function (Blueprint $table) {
+            $table->id('idAsk_comment_reating');
+            $table->timestamps();
             $table->bigInteger('idUser')->unsigned();
-            $table->timestamp('date');
+            $table->bigInteger('idComment_reating')->unsigned();
+            $table->string('text');
 
-            $table->foreign('idProduct')->references('idProduct')->on('products');
+            $table->foreign('idComment_reating')->references('idComment')->on('comment_reating');
             $table->foreign('idUser')->references('id')->on('users');
-            
         });
     }
 
@@ -33,6 +32,6 @@ class CreateReatingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reating');
+        Schema::dropIfExists('ask_comment_reating');
     }
 }

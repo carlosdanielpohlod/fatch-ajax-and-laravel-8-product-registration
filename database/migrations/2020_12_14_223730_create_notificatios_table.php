@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLogUserTable extends Migration
+class CreateNotificatiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateLogUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('logUser', function (Blueprint $table) {
-            $table->id();
-            // $table->timestamps();
-            $table->string('log');
-            $table->timestamp('time');
-            $table->biginteger('idUser')->unsigned();
+        Schema::create('notification', function (Blueprint $table) {
+            $table->id('idNotification');
+            $table->string('title',30);
+            $table->string('text');
+            $table->bigInteger('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateLogUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log_user');
+        Schema::dropIfExists('notificatios');
     }
 }

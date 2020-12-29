@@ -18,7 +18,7 @@ class CreateStatusPurchaseTable extends Migration
             $table->bigInteger('idPurchase')->unsigned();
             $table->foreign('idPurchase')->references('idPurchase')->on('user_purchase');
             $table->string('status',20);
-            $table->string('coments')->nullable();
+            $table->string('comments')->nullable();
         });
     }
 

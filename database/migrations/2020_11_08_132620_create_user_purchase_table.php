@@ -17,6 +17,7 @@ class CreateUserPurchaseTable extends Migration
             $table->id('idPurchase');
             $table->biginteger('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');   
+            $table->date('dataPurchase')->nullable();
         });
     }
 

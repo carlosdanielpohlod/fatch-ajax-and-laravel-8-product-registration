@@ -98,8 +98,8 @@ class DatabaseSeeder extends Seeder
         }            
         
         $numBrands = sizeof($marcaCalcados) + sizeof($marcaRoupas);
-
-        for ($i = 1; $i < 100; $i ++){
+        $numProducts = 100;
+        for ($i = 1; $i < $numProducts; $i ++){
             $jaInseridos = [];
             $idCategoria = \random_int(1,$tamCategorias - 1);
             $idBrand = \random_int(1,$numBrands - 2);
@@ -126,14 +126,21 @@ class DatabaseSeeder extends Seeder
             }
         }
 // 
-
+        for($i = 1; $i < $numProducts; $i ++){
+            DB::table('storage')->insert(
+                [
+                    'idProduct' => $i,
+                    'quantity' => \random_int(0,20)
+                ]
+            );
+        }
 
         for($i = 1; $i < 20; $i++){
             DB::table('user_purchase')->insert([
                 
                 'idPurchase' => $i,
                 'idUser' => random_int(1,5)
-            
+                
             ]);
             
             $products = [];
