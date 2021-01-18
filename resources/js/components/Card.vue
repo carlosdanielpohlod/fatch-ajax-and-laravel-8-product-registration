@@ -15,11 +15,10 @@
                 <span class="product-discount-label" v-if="porcent">{{porcent}} %</span>
             </div>
             <ul class="rating">
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star"></li>
-                <li class="fa fa-star disable"></li>
+                    
+                <li v-for="n in rating"  class="fa fa-star"></li>
+                
+                <li v-for="i in (5 - rating)" class="fa fa-star disable"></li>
             </ul>
             <div class="product-content">
                 <h3 class="title"><a href="#">{{title}}</a></h3>
@@ -45,7 +44,8 @@ export default {
     descount: {},
     porcent: {type:Boolean},
     pic01: {},
-    pic02: {}
+    pic02: {}, 
+    rating: {}
   }
 }
 </script>
