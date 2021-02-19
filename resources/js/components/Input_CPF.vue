@@ -1,5 +1,5 @@
 <template>
-    <input name="CPF" @input="validate()">
+    
 </template>
 
 <script>
