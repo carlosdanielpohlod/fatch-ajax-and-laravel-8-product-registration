@@ -13,14 +13,14 @@ class AlterUserAddressTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->biginteger('idAddress')->unsigned();
-            $table->foreign('idAddress')->references('idAddress')->on('users')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade')
-            ;
-        });
+        // Schema::table('users', function (Blueprint $table) {
+        //     $table->biginteger('idAddress')->unsigned();
+        //     $table->foreign('idAddress')->references('idAddress')->on('users')
+        //     ->constrained()
+        //     ->onUpdate('cascade')
+        //     ->onDelete('cascade')
+        //     ;
+        // });
     }
 
     /**

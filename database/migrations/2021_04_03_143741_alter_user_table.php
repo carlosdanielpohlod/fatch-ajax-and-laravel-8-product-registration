@@ -11,12 +11,12 @@ class AlterUserTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('admin')->default(false);
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::table('users', function (Blueprint $table) {
+    //         $table->boolean('admin')->default(false);
+    //     });
+    // }
 
     /**
      * Reverse the migrations.
